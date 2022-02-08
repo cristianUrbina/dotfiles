@@ -489,7 +489,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
    "\ coc#jumpable() ? "\<c-r>=coc#rpc#request('snippetPrev', [])<cr>" :
    "\ "\<c-k>"
 
-autocmd ColorScheme * highlight CocHighlightText  ctermbg=244   ctermfg=white    guifg=#FF0000
+autocmd ColorScheme * highlight CocHighlightText  ctermbg=243  ctermfg=white 
 
 """"""""""""""""""""""""coc nvim settings end""""""""""""""""""""""""
 
@@ -531,9 +531,9 @@ let g:gruvbox_improved_warnings = '1'
 autocmd vimenter * ++nested colorscheme gruvbox
 
 " Important!!
-"if has('termguicolors')
-  "set termguicolors
-"endif
+if has('termguicolors')
+  set termguicolors
+endif
 
 "let g:everforest_background = 'high'
 ""let g:everforest_transparent_background = 1
