@@ -4,9 +4,6 @@ syntax on
 "Font 
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 
-" Set FZF Default to Ripgrep (must install ripgrep)
-let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --no-ignore-vcs'
-
 " Options viewable by using :options
 " Set options viewable by using :set all
 " Or help for individual configs can be accessed :help <name>
@@ -42,6 +39,9 @@ set undolevels=10000
 
 " Column color set to grey
 highlight ColorColumn ctermbg=1
+
+" Disable polyglot to use vim-jsx-pretty instead
+let g:polyglot_disabled = ['jsx']
 
 " Plugins
 call plug#begin('~/.vim/plugged')
@@ -98,9 +98,6 @@ Plug 'ambv/black'
 " Gruvbox color theme
 Plug 'morhetz/gruvbox'
 
-" Everforest color scheme
-Plug 'sainnhe/everforest'
-
 " Vim-monokai-tasty color theme
 Plug 'patstockwell/vim-monokai-tasty'
 
@@ -143,8 +140,6 @@ call plug#end()
 " Tagbar config
 nmap <F8> :TagbarToggle<CR>
 
-" Disable polyglot to use vim-jsx-pretty instead
-let g:polyglot_disabled = ['jsx']
 " Use colorful style
 let g:vim_jsx_pretty_colorful_config = 1 " default 0
 
@@ -152,9 +147,10 @@ let g:vim_jsx_pretty_colorful_config = 1 " default 0
 " Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
 " - https://github.com/Valloric/YouCompleteMe
 " - https://github.com/nvim-lua/completion-nvim
-"let g:UltiSnipsExpandTrigger="<leader>x"
-"let g:UltiSnipsJumpForwardTrigger="<leader>b"
-"let g:UltiSnipsJumpBackwardTrigger="<leader>z"
+let g:UltiSnipsExpandTrigger="<c-x>"
+" let g:UltiSnipsListSnippets="<c-y>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -166,23 +162,17 @@ let g:airline#extensions#tabline#left_sep = '◤'
 let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
-
-
 " Airline theme config
-"let g:airline_theme='onehalfdark'
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts = '1'
 let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_airline_statusline = 1
-"let g:airline_theme='kalisi'
-"let g:airline_theme='badwolf'
-"let g:airline_theme='dark'
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-" unicode symbols
+" Unicode symbols
 let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
@@ -207,66 +197,14 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 "NerdTree config
 let NERDTreeQuitOnOpen=1
-"let  g:NERDTreeWinSize=20
+" let  g:NERDTreeWinSize=20
 " Start NERDTree and put the cursor back in the other window.
-"autocmd VimEnter * NERDTree | wincmd p
+" autocmd VimEnter * NERDTree | wincmd p
 
-" Set mapleader to space
-let mapleader = " "
-" Maps
-nmap <leader>hk :vsplit ~/.vim/hotkeys<cr>
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gr <Plug>(coc-references)
-nmap <leader>nt :NERDTreeFind<cr>
-nmap <leader>t :NERDTree<cr>
-nmap <leader><leader>p :Prettier<cr>
-nmap <leader><leader>u :UndotreeToggle<cr>
-nnoremap <Esc> :noh<CR>
-" Files (runs $FZF_DEFAULT_COMMAND if defined)
-nmap <leader><leader>f :Files<cr>
-"nmap <leader><leader><leader>g :GoMetaLinter<cr>
-nnoremap <C-p> :GFiles<CR>
-"nnoremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
-"vnoremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
-nnoremap <leader><Tab> :bnext<CR>
-nnoremap <leader><S-Tab> :bprevious<CR>
-"Easymotion config
-nmap <leader>s <Plug>(easymotion-s2)
-"Some custom shortcuts
-nmap <leader>w :w<CR>
-nmap <leader>q :q<CR>
-
-" Show marks and go to one
-nnoremap <leader>m :<C-u>marks<CR>:normal! `
-
-" Show buffers and go to one
-nnoremap <leader><leader>b :ls<CR>:b<Space>
-
-" show undolist
-nnoremap <leader>u :undolist<CR>:u<Space>
-
-" Toggle paste mode
-"set pastetoggle=<leader><leader>i
-
-" Folding mappings
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf
-
-"nmap <Alt>w :buffer
 "Color picker config
 let g:vcoolor_map = '<c-c>'
-
-
+" LargeFile Plugin config 
 let g:LargeFile = 5
-
-
-" Search & Replace maps
-
-noremap ;; :%s:::g<Left><Left><Left>
-noremap ;' :%s:::cg<Left><Left><Left><Left>
-noremap ;, :%s:::cgi<Left><Left><Left><Left>
 
 " NERDCommenter settings
 filetype plugin on
@@ -303,6 +241,94 @@ let g:NERDTrimTrailingWhitespace = 1
 " let g:VM_maps = {}
 " let g:VM_maps["Undo"] = 'u'
 " let g:VM_maps["Redo"] = '<C-r>'
+
+" Set the prettier CLI executable path
+let g:prettier#exec_cmd_path = "~/.vim/plugged/vim-prettier/node_modules/prettier"
+let g:prettier#config#config_precedence = 'file-override'
+
+" Max line length that prettier will wrap on: a number or 'auto'
+let g:prettier#config#print_width = 100
+
+" number of spaces per indentation level
+let g:prettier#config#tab_width = 2
+"let g:prettier#config#tab_width = 4
+
+" use tabs over spaces
+let g:prettier#config#use_tabs = 'false'
+
+" print semicolons
+"let g:prettier#config#semi = 'false'
+"let g:prettier#config#semi = 'true'
+
+" single quotes over double quotes
+"let g:prettier#config#single_quote = 'true'
+
+" none|es5|all
+"let g:prettier#config#trailing_comma = 'none'
+
+let g:gruvbox_italic = '1'
+let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_hls_cursor = 'aqua'
+"let g:gruvbox_number_column = 'gray'
+"let g:gruvbox_sign_column = 'gray'
+let g:gruvbox_transparent_bg = '1'
+let g:gruvbox_italicize_strings = '1'
+"let g:gruvbox_improved_strings = '1'
+let g:gruvbox_improved_warnings = '1'
+
+" Colorscheme (For gruvbox $TERM env var needs to be xterm-256color)
+autocmd vimenter * ++nested colorscheme gruvbox
+
+" Important!!
+if has('termguicolors')
+  set termguicolors
+endif
+
+" Set mapleader to space
+let mapleader = " "
+" Mappings
+nmap <leader>hk :vsplit ~/.vim/hotkeys<cr>
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+nmap <leader>nt :NERDTreeFind<cr>
+nmap <leader>t :NERDTree<cr>
+nmap <leader><leader>p :Prettier<cr>
+nmap <leader><leader>u :UndotreeToggle<cr>
+nnoremap <Esc> :noh<CR>
+" Files (runs $FZF_DEFAULT_COMMAND if defined)
+nmap <leader><leader>f :Files<cr>
+nmap <leader>rg :Rg<cr>
+nnoremap <C-p> :GFiles<CR>
+"nnoremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
+"vnoremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
+nnoremap <leader><Tab> :bnext<CR>
+nnoremap <leader><S-Tab> :bprevious<CR>
+"Easymotion config
+nmap <leader>s <Plug>(easymotion-s2)
+"Some custom shortcuts
+nmap <leader>w :w<CR>
+nmap <leader>q :q<CR>
+" Search & Replace maps
+noremap ;; :%s:::g<Left><Left><Left>
+noremap ;' :%s:::cg<Left><Left><Left><Left>
+noremap ;, :%s:::cgi<Left><Left><Left><Left>
+" Show marks and go to one
+nnoremap <leader>m :<C-u>marks<CR>:normal! `
+" Show buffers and go to one
+nnoremap <leader><leader>b :ls<CR>:b<Space>
+" Show undolist
+nnoremap <leader>u :undolist<CR>:u<Space>
+" Toggle paste mode
+set pastetoggle=<leader><leader>i
+" Folding mappings
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
+
+" Set FZF Default to Ripgrep (must install ripgrep)
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --no-ignore-vcs'
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 
 """"""""""""""""""""""""coc nvim settings start""""""""""""""""""""""""
 
@@ -492,61 +518,3 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 autocmd ColorScheme * highlight CocHighlightText  ctermbg=243  ctermfg=white 
 
 """"""""""""""""""""""""coc nvim settings end""""""""""""""""""""""""
-
-" Set the prettier CLI executable path
-let g:prettier#exec_cmd_path = "~/.vim/plugged/vim-prettier/node_modules/prettier"
-let g:prettier#config#config_precedence = 'file-override'
-
-" Max line length that prettier will wrap on: a number or 'auto'
-let g:prettier#config#print_width = 100
-
-" number of spaces per indentation level
-let g:prettier#config#tab_width = 2
-"let g:prettier#config#tab_width = 4
-
-" use tabs over spaces
-let g:prettier#config#use_tabs = 'false'
-
-" print semicolons
-"let g:prettier#config#semi = 'false'
-"let g:prettier#config#semi = 'true'
-
-" single quotes over double quotes
-"let g:prettier#config#single_quote = 'true'
-
-" none|es5|all
-"let g:prettier#config#trailing_comma = 'none'
-
-let g:gruvbox_italic = '1'
-let g:gruvbox_contrast_dark = 'soft'
-let g:gruvbox_hls_cursor = 'aqua'
-"let g:gruvbox_number_column = 'gray'
-"let g:gruvbox_sign_column = 'gray'
-let g:gruvbox_transparent_bg = '1'
-let g:gruvbox_italicize_strings = '1'
-"let g:gruvbox_improved_strings = '1'
-let g:gruvbox_improved_warnings = '1'
-
-" Colorscheme (For gruvbox $TERM env var needs to be xterm-256color)
-autocmd vimenter * ++nested colorscheme gruvbox
-
-" Important!!
-if has('termguicolors')
-  set termguicolors
-endif
-
-"let g:everforest_background = 'high'
-""let g:everforest_transparent_background = 1
-"let g:everforest_enable_italic = 1
-"let g:everforest_disable_italic_comment = 1
-"let g:everforest_cursor = 'green' " Only works in GUI clients
-"let g:everforest_ui_contrast = 'high'
-"let g:everforest_diagnostic_text_highlight = 1
-"let g:everforest_diagnostic_line_highlight = 1
-"let g:everforest_current_word = 'underline'
-"let g:everforest_better_performance = 1
-
-"colorscheme everforest
-
-"hi Visual  guifg=#000000 guibg=#16CD16 gui=none
-
