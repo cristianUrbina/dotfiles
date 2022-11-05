@@ -1,4 +1,4 @@
-local gset = vim.api.nvim_set_var
+--local gset = vim.api.nvim_set_var
 local remap = vim.api.nvim_set_keymap
 
 --local floating = {position = 'floating', [ 'open-action-strategy' ] = 'floating'}

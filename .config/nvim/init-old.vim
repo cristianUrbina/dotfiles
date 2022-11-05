@@ -64,9 +64,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeFind' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Syntax highlighting for nerdtree
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
 " Icons for nerdtree
 Plug 'ryanoasis/vim-devicons'
 

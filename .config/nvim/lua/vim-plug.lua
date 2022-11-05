@@ -5,7 +5,7 @@ vim.call('plug#begin')
 --Make your Vim/Neovim as smart as VSCode
 Plug('neoclide/coc.nvim', {['branch'] = 'release'})
 
--- Track the engine.
+-- Track the engine.vim
 Plug 'SirVer/ultisnips'
 -- Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
@@ -26,14 +26,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
--- Directory tree
---Plug('preservim/nerdtree', { on= 'NERDTreeFind' })
---Plug 'Xuyuanp/nerdtree-git-plugin'
-
--- Syntax highlighting for nerdtree
---Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
--- Icons for nerdtree
+-- Icons
 Plug 'ryanoasis/vim-devicons'
 
 -- Visualize undo history tree (in vim undo is not linear)
@@ -42,10 +35,6 @@ Plug 'mbbill/undotree'
 -- Syntax highlighting for languages
 Plug 'sheerun/vim-polyglot'
 
--- Fzf is a general-purpose command-line fuzzy finder
--- Plug 'junegunn/fzf.vim'
--- Plug ('junegunn/fzf', { ['do']= { vim.fn.call('fzf#install()')} })
---
 -- TELESCOPE
 Plug 'nvim-lua/plenary.nvim'
 Plug ('nvim-telescope/telescope.nvim', { ['tag']= '0.1.0' })
@@ -57,20 +46,20 @@ Plug 'junegunn/vim-easy-align'
 Plug ('ambv/black', {['for']= 'python'})
 
 -- Color scheme
-Plug 'morhetz/gruvbox'
-Plug 'rakr/vim-one'
-Plug 'joshdick/onedark.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'patstockwell/vim-monokai-tasty'
-Plug 'sainnhe/everforest'
 Plug 'arcticicestudio/nord-vim'
+--Plug 'morhetz/gruvbox'
+--Plug 'rakr/vim-one'
+--Plug 'joshdick/onedark.vim'
+--Plug 'altercation/vim-colors-solarized'
+--Plug 'patstockwell/vim-monokai-tasty'
+--Plug 'sainnhe/everforest'
 Plug ('nvim-treesitter/nvim-treesitter', {['do']= ':TSUpdate'})
 
 -- Surround plugin
 Plug 'tpope/vim-surround'
 
 -- Window resizers
--- Plug 'simeji/winresizer'
+Plug 'simeji/winresizer'
 --Plug 'camspiers/animate.vim' -- This plugin and lens causes problems together
 Plug 'camspiers/lens.vim'
 
@@ -108,5 +97,5 @@ Plug 'vim-scripts/LargeFile'
 Plug  'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
 -- Plug 'frazrepo/vim-rainbow'
-Plug 'k80w/vim-ckb'
+--Plug 'k80w/vim-ckb'
 vim.call('plug#end')

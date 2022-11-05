@@ -14,5 +14,6 @@
   "explorer.previewAction.onHover": "content",
   "explorer.quitOnOpen": true,
   "explorer.previewAction.content.maxHeight": 40,
-  "explorer.trash.command": "trash-put %l', 'mv --backup=t %l ~/.trash/"
+  "explorer.trash.command": "trash-put %l",
+  "explorer.file.reveal.whenOpen": true  
 }
