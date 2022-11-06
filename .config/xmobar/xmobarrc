@@ -1,0 +1,43 @@
+Config { font = "xft:CaskaydiaCove Nerd Font Mono:pixelsize=12:antialias=true:hinting=true"
+       , additionalFonts = []
+       , borderColor = "black"
+       , border = TopB
+       , bgColor      = "#2E3440"
+       , fgColor      = "#D8DEE9"
+       , alpha = 255
+       , position = Top
+       , textOffset = -1
+       , iconOffset = -1
+       , lowerOnStart = True
+       , pickBroadest = False
+       , persistent = False
+       , hideOnStart = False
+       , iconRoot = "."
+       , allDesktops = True
+       , overrideRedirect = True
+       , commands = [ Run Weather "MMMY" ["-t","<station>: <tempC>C",
+                                          "-L","18","-H","35",
+                                          "--normal","green",
+                                          "--high","red",
+                                          "--low","lightblue"] 36000
+                    , Run Network "wlo1" ["-t", "<rx> | <tx>",
+                                          "-L","0","-H","32",
+                                          "-S", "True",
+                                          "--normal","green","--high","red"] 10
+                    , Run Wireless "wlo1" ["-t","<fc=#6c71c4><essid> <quality>%</fc>",
+                                          "-L","0","-H","100",
+                                          "--normal","red","--high","green"] 10
+                    , Run Cpu ["-L","3","-H","50",
+                               "--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Com "uname" ["-s","-r"] "" 36000
+                    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+                    , Run Volume "default" "Master" [] 10
+                    , Run BatteryP ["BAT0"] ["-t", "<acstatus><watts> (<left>%)"] 60
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%cpu% | %memory% * %swap% | %wlo1wi% - %wlo1% }\
+                    \{ %battery% | %default:Master%| <fc=#ee9a00>%date%</fc>| %MMMY% | %uname%"
+       }
