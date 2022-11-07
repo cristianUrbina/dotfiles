@@ -98,4 +98,6 @@ Plug  'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
 -- Plug 'frazrepo/vim-rainbow'
 --Plug 'k80w/vim-ckb'
+--
+Plug 'AndrewRadev/linediff.vim'
 vim.call('plug#end')
