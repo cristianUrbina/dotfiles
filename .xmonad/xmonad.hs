@@ -253,8 +253,8 @@ myLogHook = return ()
 myStartupHook = do 
     spawnOnce "nitrogen --restore"
     spawnOnce "compton"
-    spawnOnce "xrandr --output HDMI-0 --mode 1680x1050 --primary --auto --output eDP-1-1 --mode 1920x1080 --left-of HDMI-0 --auto"
-
+    spawnOnce "xrandr --output HDMI-0 --mode 1920x1080 --primary --auto --output eDP-1-1 --mode 1920x1080 --left-of HDMI-0 --auto"
+    spawn "xset r rate 170 40"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
