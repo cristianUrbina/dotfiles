@@ -44,4 +44,7 @@ require('themes/nord_config')
 require('airline-config');
 require('winresizer-config');
 
-vim.cmd('source ~/Documents/PersonalProjects/vim-ckb-next/plugin/vim-ckb-next.vim');
+-- vim.cmd('source ~/Documents/PersonalProjects/vim-ckb-next/plugin/vim-ckb-next.vim');
+local gset = vim.api.nvim_set_var
+gset('coc_global_extensions', {'coc-json', 'coc-css', 'coc-clangd', 'coc-marketplace', 'coc-explorer'})
+
