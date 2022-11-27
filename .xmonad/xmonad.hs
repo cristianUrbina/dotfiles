@@ -130,7 +130,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
 
     -- Restart xmonad
-    , ((modm              , xK_q     ), spawn "xmonad --recompile; pkill xmobar; xmonad --restart")
+    , ((modm              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
 
     -- Run xmessage with a summary of the default keybindings (useful for beginners)
     , ((modm .|. shiftMask, xK_slash ), spawn ("echo \"" ++ help ++ "\" | xmessage -file -"))
@@ -253,7 +253,7 @@ myLogHook = return ()
 myStartupHook = do 
     spawnOnce "nitrogen --restore"
     spawnOnce "compton"
-    spawnOnce "xrandr --output HDMI-0 --mode 1920x1080 --primary --auto --output eDP-1-1 --mode 1920x1080 --left-of HDMI-0 --auto"
+    spawnOnce "xrandr --output HDMI-1-0 --mode 1920x1080 --primary --auto --output eDP-1 --mode 1920x1080 --left-of HDMI-1-0 --auto"
     spawn "xset r rate 170 40"
 
 ------------------------------------------------------------------------
@@ -262,8 +262,7 @@ myStartupHook = do
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do 
-    xmproc0 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"
-    xmproc1 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc"
+    xmproc <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobarrc"
     xmonad $ docks defaults
 
 -- A structure containing your configuration settings, overriding
