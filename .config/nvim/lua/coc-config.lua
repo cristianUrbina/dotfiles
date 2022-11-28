@@ -179,3 +179,6 @@ keyset("n", "<Leader>;j", ":<C-u>CocNext<cr>", opts)
 keyset("n", "<Leader>;k", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc 
 keyset("n", "<Leader>;p", ":<C-u>CocListResume<cr>", opts)
+
+local gset = vim.api.nvim_set_var
+gset('coc_global_extensions', {'coc-json', 'coc-css', 'coc-clangd', 'coc-marketplace', 'coc-explorer'})
