@@ -1,17 +1,10 @@
---
--- xmonad example config file.
---
--- A template showing all available configuration hooks,
--- and how to override the defaults in your own xmonad.hs conf file.
---
--- Normally, you'd only override those defaults you care about.
---
-    --Base
+  --Base
 import XMonad
-import Data.Monoid
 import System.Exit
-import XMonad.Layout.Spacing
 import System.IO (hClose, hPutStr, hPutStrLn)
+
+  --Data
+import Data.Monoid
 
   -- Hooks
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
@@ -25,7 +18,10 @@ import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.WindowSwallowing
 import XMonad.Hooks.WorkspaceHistory
 
- -- Utilities
+  -- Layouts 
+import XMonad.Layout.Spacing
+
+  -- Utilities
 import XMonad.Util.Dmenu
 import XMonad.Util.EZConfig (additionalKeysP, mkNamedKeymap)
 import XMonad.Util.Hacks (windowedFullscreenFixEventHook, javaHack, trayerAboveXmobarEventHook, trayAbovePanelEventHook, trayerPaddingXmobarEventHook, trayPaddingXmobarEventHook, trayPaddingEventHook)
@@ -39,24 +35,16 @@ import qualified Data.Map        as M
 
 
     -- Variables
-windowCount :: X (Maybe String)
-windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
-
--- The preferred terminal program, which is used in a binding below and by
--- certain contrib modules.
---
+myTerminal :: String
 myTerminal      = "alacritty"
 
--- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
-myFocusFollowsMouse = True
+myFocusFollowsMouse = False
 
--- Whether clicking on a window to focus also passes the click to the window
 myClickJustFocuses :: Bool
 myClickJustFocuses = False
 
--- Width of the window border in pixels.
---
+myBorderWidth :: Dimension
 myBorderWidth   = 2
 
 -- modMask lets you specify which modkey you want to use. The default
@@ -64,6 +52,7 @@ myBorderWidth   = 2
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 --
+myModMask :: KeyMask
 myModMask       = mod4Mask
 
 -- The default number of workspaces (virtual screens) and their names.
@@ -75,12 +64,15 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
+myWorkspaces    = ["dev","www","3","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
 myNormalBorderColor  = "#D8DEE9"
 myFocusedBorderColor = "#D08770"
+
+windowCount :: X (Maybe String)
+windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -273,8 +265,9 @@ myEventHook = mempty
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
+myStartupHook :: X ()
 myStartupHook = do 
-    spawnOnce "nitrogen --restore"
+    spawnOnce "nitrogen --restore &"
     spawnOnce "compton"
     spawnOnce "xrandr --output HDMI-1-0 --mode 1920x1080 --primary --auto --output eDP-1 --mode 1920x1080 --left-of HDMI-1-0 --auto"
     spawn "xset r rate 170 40"
