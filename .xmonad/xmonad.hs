@@ -267,9 +267,11 @@ myEventHook = mempty
 -- By default, do nothing.
 myStartupHook :: X ()
 myStartupHook = do 
+    spawn "killall trayer"
     spawnOnce "nitrogen --restore &"
-    spawnOnce "compton"
+    spawnOnce "picom"
     spawnOnce "xrandr --output HDMI-1-0 --mode 1920x1080 --primary --auto --output eDP-1 --mode 1920x1080 --left-of HDMI-1-0 --auto"
+    spawn ("sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 " ++ "white" ++ " --height 22")
     spawn "xset r rate 170 40"
 
 ------------------------------------------------------------------------
@@ -279,7 +281,6 @@ myStartupHook = do
 --
 main = do 
     xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobarrc"
-    xmproc1 <- spawnPipe "xmobar -x 1 $HOME/.config/xmobar/xmobarrc"
     xmonad $ docks def {
       -- simple stuff
         terminal           = myTerminal,
@@ -299,8 +300,7 @@ main = do
         layoutHook         = smartSpacing 10 $ myLayout,
         manageHook         = myManageHook,
         handleEventHook    = myEventHook,
-        logHook            = dynamicLogWithPP $ def {  ppOutput = \x -> hPutStrLn xmproc0 x   -- xmobar on monitor 1
-                                                                     >> hPutStrLn xmproc1 x   -- xmobar on monitor 2
+        logHook            = dynamicLogWithPP xmobarPP {  ppOutput = \x -> hPutStrLn xmproc0 x   -- xmobar on monitor 1
                                                     },
         startupHook        = myStartupHook
     }
