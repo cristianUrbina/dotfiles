@@ -20,6 +20,7 @@ import XMonad.Hooks.WorkspaceHistory
 
   -- Layouts 
 import XMonad.Layout.Spacing
+import XMonad.Layout.NoBorders
 
   -- Utilities
 import XMonad.Util.Dmenu
@@ -234,7 +235,8 @@ myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "MPlayer"        --> doFloat
+    [ isFullscreen --> doFullFloat 
+    , className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
@@ -270,7 +272,6 @@ myStartupHook = do
     spawn "killall trayer"
     spawnOnce "nitrogen --restore &"
     spawnOnce "picom"
-    spawnOnce "xrandr --output HDMI-1-0 --mode 1920x1080 --primary --auto --output eDP-1 --mode 1920x1080 --left-of HDMI-1-0 --auto"
     spawn ("sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 " ++ "white" ++ " --height 22")
     spawn "xset r rate 170 40"
 
@@ -281,7 +282,7 @@ myStartupHook = do
 --
 main = do 
     xmproc0 <- spawnPipe "xmobar -x 0 $HOME/.config/xmobar/xmobarrc"
-    xmonad $ docks def {
+    xmonad $ ewmhFullscreen. ewmh $ docks def {
       -- simple stuff
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
@@ -297,8 +298,8 @@ main = do
         mouseBindings      = myMouseBindings,
 
       -- hooks, layouts
-        layoutHook         = smartSpacing 10 $ myLayout,
-        manageHook         = myManageHook,
+        layoutHook         = smartSpacing 10 $ smartBorders (myLayout),
+        manageHook         = manageDocks <+> myManageHook,
         handleEventHook    = myEventHook,
         logHook            = dynamicLogWithPP xmobarPP {  ppOutput = \x -> hPutStrLn xmproc0 x   -- xmobar on monitor 1
                                                     },
