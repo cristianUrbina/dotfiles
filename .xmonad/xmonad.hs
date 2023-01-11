@@ -270,12 +270,9 @@ myEventHook = mempty
 myStartupHook :: X ()
 myStartupHook = do 
     spawn "killall trayer"
-    spawnOnce "xrandr --output HDMI-1-0 --mode 1920x1080 --primary --auto --output eDP-1 --mode 1920x1080 --left-of HDMI-1-0 --auto --output DVI-I-2-1 --mode 1680x1050 --right-of HDMI-1-0 --auto"
     spawnOnce "nitrogen --restore &"
     spawnOnce "picom"
-    spawn ("sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 " ++ "white" ++ " --height 22")
     spawn "xset r rate 170 40"
-    spawnOnce "ckb-next &"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
