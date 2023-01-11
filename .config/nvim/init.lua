@@ -44,4 +44,5 @@ require('themes/nord_config')
 require('airline-config');
 require('winresizer-config');
 
+require'colorizer'.setup();
 -- vim.cmd('source ~/Documents/PersonalProjects/vim-ckb-next/plugin/vim-ckb-next.vim');

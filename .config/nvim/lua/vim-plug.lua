@@ -100,4 +100,5 @@ Plug 'jiangmiao/auto-pairs'
 --Plug 'k80w/vim-ckb'
 --
 Plug 'AndrewRadev/linediff.vim'
+Plug 'norcalli/nvim-colorizer.lua'
 vim.call('plug#end')
