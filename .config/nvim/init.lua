@@ -32,8 +32,9 @@ set.termguicolors = true
 set.background    = 'dark'
 set.splitbelow    = true
 set.splitright    = true
+set.colorcolumn   = '80'
 
-package.path = package.path .. ";./lua/?.lua"
+package.path      = package.path .. ";./lua/?.lua"
 
 require('vim-plug');
 require('keybindings_config');

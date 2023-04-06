@@ -10,11 +10,14 @@ Plug('neoclide/coc.nvim', {['branch'] = 'release'})
 -- Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
+-- Session persistence
+Plug 'tpope/vim-obsession'
+
 -- Formatter
 Plug('prettier/vim-prettier', { ['do']= 'sudo yarn install --frozen-lockfile --production' })
 
 -- Comment and uncomment lines
-Plug 'preservim/nerdcommenter'
+--Plug 'preservim/nerdcommenter'
 
 -- Multicursor
 -- Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -41,9 +44,6 @@ Plug ('nvim-telescope/telescope.nvim', { ['tag']= '0.1.0' })
 
 -- Align a paragraph around a character
 Plug 'junegunn/vim-easy-align'
-
--- Python code formatter
-Plug ('ambv/black', {['for']= 'python'})
 
 -- Color scheme
 Plug 'arcticicestudio/nord-vim'
@@ -101,4 +101,7 @@ Plug 'jiangmiao/auto-pairs'
 --
 Plug 'AndrewRadev/linediff.vim'
 Plug 'norcalli/nvim-colorizer.lua'
+
+-- Tmux 
+Plug 'christoomey/vim-tmux-navigator'
 vim.call('plug#end')

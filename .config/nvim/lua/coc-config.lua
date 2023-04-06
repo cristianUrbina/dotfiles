@@ -181,4 +181,4 @@ keyset("n", "<Leader>;k", ":<C-u>CocPrev<cr>", opts)
 keyset("n", "<Leader>;p", ":<C-u>CocListResume<cr>", opts)
 
 local gset = vim.api.nvim_set_var
-gset('coc_global_extensions', {'coc-json', 'coc-css', 'coc-clangd', 'coc-marketplace', 'coc-explorer'})
+gset('coc_global_extensions', {'coc-prettier', 'coc-tsserver', 'coc-json', 'coc-css', 'coc-clangd', 'coc-marketplace', 'coc-explorer', 'coc-pyright'})

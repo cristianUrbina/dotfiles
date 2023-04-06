@@ -1,15 +1,6 @@
 {
   "colors.filetypes": ["*"],
-  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/14.0.3/clangd_14.0.3/bin/clangd",
-  "explorer.root.customRules": {
-    "vcs": {
-      "patterns": [".git", ".hg", ".projections.json"]
-    },
-    "vcs-r": {
-      "patterns": [".git", ".hg", ".projections.json"],
-      "bottomUp": true
-    }
-  },
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd",
   "languageserver": {
     "haskell": {
       "command": "haskell-language-server-wrapper",
@@ -30,10 +21,21 @@
       ]
     }
   },
+  "explorer.root.customRules": {
+    "vcs": {
+      "patterns": [".git", ".hg", ".projections.json"]
+    },
+    "vcs-r": {
+      "patterns": [".git", ".hg", ".projections.json"],
+      "bottomUp": true
+    }
+  },
   "explorer.icon.enableNerdfont": true,
-  "explorer.previewAction.onHover": "content",
+  "explorer.previewAction.onHover": "labeling",
   "explorer.quitOnOpen": true,
   "explorer.previewAction.content.maxHeight": 40,
   "explorer.trash.command": "trash-put %l",
-  "explorer.file.reveal.whenOpen": true  
+  "explorer.file.reveal.whenOpen": true,
+  "python.formatting.provider": "black",
+  "coc.preferences.formatOnSave": true 
 }
