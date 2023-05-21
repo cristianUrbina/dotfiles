@@ -65,7 +65,7 @@ myModMask       = mod4Mask
 --
 -- > workspaces = ["web", "irc", "code" ] ++ map show [4..9]
 --
-myWorkspaces    = ["dev","www","3","4","5","6","7","8","9"]
+myWorkspaces    = ["dev","www","tools","4","5","6","7","8","9"]
 
 -- Border colors for unfocused and focused windows, respectively.
 --
@@ -238,6 +238,7 @@ myManageHook = composeAll
     [ isFullscreen --> doFullFloat 
     , className =? "MPlayer"        --> doFloat
     , className =? "Gimp"           --> doFloat
+    , className =? "ckb-next"       --> doShift "tools" 
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
@@ -271,7 +272,9 @@ myStartupHook :: X ()
 myStartupHook = do 
     spawn "killall trayer"
     spawnOnce "nitrogen --restore &"
+    spawnOnce "xrandr --output HDMI-1-0 --mode 1920x1080 --primary --auto --output DVI-I-2-1 --mode 1680x1050 --left-of HDMI-1-0 --auto"
     spawnOnce "picom"
+    spawnOnce "ckb-next"
     spawn "xset r rate 170 40"
 
 ------------------------------------------------------------------------
