@@ -41,7 +41,7 @@ require('keybindings_config');
 require('telescope_config');
 require('coc-explorer-config');
 require('coc-config');
-require('themes/nord_config')
+require('themes/gruvbox_config')
 require('airline-config');
 require('winresizer-config');
 

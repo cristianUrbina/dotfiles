@@ -17,7 +17,7 @@ Plug 'tpope/vim-obsession'
 Plug('prettier/vim-prettier', { ['do']= 'sudo yarn install --frozen-lockfile --production' })
 
 -- Comment and uncomment lines
---Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 
 -- Multicursor
 -- Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -46,8 +46,8 @@ Plug ('nvim-telescope/telescope.nvim', { ['tag']= '0.1.0' })
 Plug 'junegunn/vim-easy-align'
 
 -- Color scheme
-Plug 'arcticicestudio/nord-vim'
---Plug 'morhetz/gruvbox'
+--Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
 --Plug 'rakr/vim-one'
 --Plug 'joshdick/onedark.vim'
 --Plug 'altercation/vim-colors-solarized'
@@ -68,6 +68,10 @@ Plug 'moll/vim-bbye'
 
 -- React Development
 Plug 'mlaursen/vim-react-snippets'
+--Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
 
 -- Git plugins
 Plug 'airblade/vim-gitgutter'

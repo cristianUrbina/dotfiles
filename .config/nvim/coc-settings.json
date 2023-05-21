@@ -37,5 +37,5 @@
   "explorer.trash.command": "trash-put %l",
   "explorer.file.reveal.whenOpen": true,
   "python.formatting.provider": "black",
-  "coc.preferences.formatOnSave": true 
+  "coc.preferences.formatOnSave": false 
 }
