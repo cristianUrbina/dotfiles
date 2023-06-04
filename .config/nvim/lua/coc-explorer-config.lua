@@ -5,7 +5,7 @@ local remap = vim.api.nvim_set_keymap
 --local presets = {floating = floating}
 --gset('coc_explorer_global_presets', presets)
 --remap('n','<Leader>e','<Cmd>CocCommand explorer --preset floating<CR>', {noremap = true})
-remap('n','<Leader>e','<Cmd>CocCommand explorer<CR>', {noremap = true})
+--remap('n:w,'<Leader>e','<Cmd>CocCommand explorer<CR>', {noremap = true})
 
 --remap('n','<Leader><Leader>e', '<Cmd>CocCommand explorer<CR>', {})
 -- Use preset argument to open it

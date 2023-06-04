@@ -22,7 +22,7 @@ end
 -- no select by `"suggest.noselect": true` in your configuration file.
 -- NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 -- other plugin before putting this into your config.
-local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
+local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
 keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
 keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 
@@ -32,25 +32,25 @@ keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r
 
 -- Use <c-j> to trigger snippets
 keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
--- Use <c-space> to trigger completion.
-keyset("i", "<c-t>", "coc#refresh()", {silent = true, expr = true})
+-- Use <c-t> to trigger completion.
+keyset("i", "<c-t>", "coc#refresh()", { silent = true, expr = true })
 
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-keyset("n", "[g", "<Plug>(coc-diagnostic-prev)", {silent = true})
-keyset("n", "]g", "<Plug>(coc-diagnostic-next)", {silent = true})
+keyset("n", "[g", "<Plug>(coc-diagnostic-prev)", { silent = true })
+keyset("n", "]g", "<Plug>(coc-diagnostic-next)", { silent = true })
 
 -- GoTo code navigation.
-keyset("n", "gd", "<Plug>(coc-definition)", {silent = true})
-keyset("n", "gy", "<Plug>(coc-type-definition)", {silent = true})
-keyset("n", "gi", "<Plug>(coc-implementation)", {silent = true})
-keyset("n", "gr", "<Plug>(coc-references)", {silent = true})
+keyset("n", "gd", "<Plug>(coc-definition)", { silent = true })
+keyset("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
+keyset("n", "gi", "<Plug>(coc-implementation)", { silent = true })
+keyset("n", "gr", "<Plug>(coc-references)", { silent = true })
 
 
 -- Use K to show documentation in preview window.
 function _G.show_docs()
     local cw = vim.fn.expand('<cword>')
-    if vim.fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
+    if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
         vim.api.nvim_command('h ' .. cw)
     elseif vim.api.nvim_eval('coc#rpc#ready()') then
         vim.fn.CocActionAsync('doHover')
@@ -58,7 +58,8 @@ function _G.show_docs()
         vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
     end
 end
-keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
+
+keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', { silent = true })
 
 
 -- Highlight the symbol and its references when holding the cursor.
@@ -71,12 +72,12 @@ vim.api.nvim_create_autocmd("CursorHold", {
 
 
 -- Symbol renaming.
-keyset("n", "<leader>rn", "<Plug>(coc-rename)", {silent = true})
+keyset("n", "<leader>rn", "<Plug>(coc-rename)", { silent = true })
 
 
 -- Formatting selected code.
-keyset("x", "<leader>f", "<Plug>(coc-format-selected)", {silent = true})
-keyset("n", "<leader>f", "<Plug>(coc-format-selected)", {silent = true})
+keyset("x", "<leader>f", "<Plug>(coc-format-selected)", { silent = true })
+keyset("n", "<leader>f", "<Plug>(coc-format-selected)", { silent = true })
 
 
 -- Setup formatexpr specified filetype(s).
@@ -181,4 +182,4 @@ keyset("n", "<Leader>;k", ":<C-u>CocPrev<cr>", opts)
 keyset("n", "<Leader>;p", ":<C-u>CocListResume<cr>", opts)
 
 local gset = vim.api.nvim_set_var
-gset('coc_global_extensions', {'coc-prettier', 'coc-tsserver', 'coc-json', 'coc-css', 'coc-clangd', 'coc-marketplace', 'coc-explorer', 'coc-pyright'})
+gset('coc_global_extensions', {'coc-prettier', 'coc-tsserver', 'coc-json', 'coc-css', 'coc-clangd', 'coc-marketplace', 'coc-pyright', 'coc-lua'})

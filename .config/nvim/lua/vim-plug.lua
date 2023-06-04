@@ -14,10 +14,10 @@ Plug 'honza/vim-snippets'
 Plug 'tpope/vim-obsession'
 
 -- Formatter
-Plug('prettier/vim-prettier', { ['do']= 'sudo yarn install --frozen-lockfile --production' })
+-- Plug('prettier/vim-prettier', { ['do']= 'sudo yarn install --frozen-lockfile --production' })
 
 -- Comment and uncomment lines
-Plug 'preservim/nerdcommenter'
+-- Plug 'preservim/nerdcommenter'
 
 -- Multicursor
 -- Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -26,11 +26,13 @@ Plug 'preservim/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 
 -- A light and configurable statusline/tabline plugin for Vim
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+--Plug 'vim-airline/vim-airline'
+--Plug 'vim-airline/vim-airline-themes'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kdheepak/tabline.nvim'
 
 -- Icons
-Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-tree/nvim-web-devicons'
 
 -- Visualize undo history tree (in vim undo is not linear)
 Plug 'mbbill/undotree'
@@ -47,12 +49,12 @@ Plug 'junegunn/vim-easy-align'
 
 -- Color scheme
 --Plug 'arcticicestudio/nord-vim'
-Plug 'morhetz/gruvbox'
+--Plug 'morhetz/gruvbox'
 --Plug 'rakr/vim-one'
 --Plug 'joshdick/onedark.vim'
 --Plug 'altercation/vim-colors-solarized'
 --Plug 'patstockwell/vim-monokai-tasty'
---Plug 'sainnhe/everforest'
+Plug 'sainnhe/everforest'
 Plug ('nvim-treesitter/nvim-treesitter', {['do']= ':TSUpdate'})
 
 -- Surround plugin
@@ -93,9 +95,9 @@ Plug 'mhinz/vim-startify'
 -- Plug 'wellle/context.vim'
 
 -- Productivity
-Plug 'wakatime/vim-wakatime'
 Plug 'tweekmonster/startuptime.vim'
-Plug 'vim-scripts/LargeFile'
+--Plug 'vim-scripts/LargeFile'
+Plug 'LunarVim/bigfile.nvim'
 
 -- IDE features
 Plug  'Yggdroot/indentLine'
@@ -108,4 +110,11 @@ Plug 'norcalli/nvim-colorizer.lua'
 
 -- Tmux 
 Plug 'christoomey/vim-tmux-navigator'
+
+-- New
+Plug 'stevearc/overseer.nvim'
+Plug 'simrat39/symbols-outline.nvim'
+Plug 'folke/trouble.nvim'
+Plug ('ms-jpq/chadtree', {['branch'] = 'chad', ['do'] = 'python3 -m chadtree deps'})
+Plug 'tpope/vim-repeat'
 vim.call('plug#end')

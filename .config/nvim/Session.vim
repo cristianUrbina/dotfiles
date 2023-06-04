@@ -13,22 +13,14 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +45 init.lua
-badd +1 lua/coc-config.lua
-badd +73 lua/vim-plug.lua
-badd +1 ~/.config/nvim/themes/gruvbox.vim
-badd +13 themes/onedark.vim
-badd +3 lua/themes/everforest_config.lua
-badd +150 ~/.config/alacritty/alacritty.yml
-badd +2 ~/.config/nvim/lua/themes/gruvbox_config.lua
-badd +19 lua/airline-config.lua
-badd +1 -session
-badd +40 coc-settings.json
-badd +19 ~/.config/nvim/lua/keybindings_config.lua
+badd +37 init.lua
+badd +10 lua/themes/everforest_config.lua
+badd +97 lua/vim-plug.lua
+badd +26 lua/lualine-config.lua
 argglobal
 %argdel
 $argadd init.lua
-edit lua/vim-plug.lua
+edit lua/themes/everforest_config.lua
 argglobal
 balt init.lua
 setlocal fdm=manual
@@ -41,12 +33,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 73 - ((15 * winheight(0) + 22) / 44)
+let s:l = 10 - ((9 * winheight(0) + 33) / 66)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 73
-normal! 030|
+keepjumps 10
+normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -60,6 +52,7 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
+nohlsearch
 let g:this_session = v:this_session
 let g:this_obsession = v:this_session
 doautoall SessionLoadPost
