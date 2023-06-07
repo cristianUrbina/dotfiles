@@ -17,7 +17,7 @@ Plug 'tpope/vim-obsession'
 -- Plug('prettier/vim-prettier', { ['do']= 'sudo yarn install --frozen-lockfile --production' })
 
 -- Comment and uncomment lines
--- Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 
 -- Multicursor
 -- Plug 'mg979/vim-visual-multi', {'branch': 'master'}
