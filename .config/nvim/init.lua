@@ -40,7 +40,6 @@ package.path      = package.path .. ";./lua/?.lua"
 require('vim-plug');
 require('keybindings_config');
 require('telescope_config');
-require('coc-explorer-config');
 require('coc-config');
 require('themes/everforest_config')
 require('winresizer-config');
@@ -52,4 +51,4 @@ require("overseer").setup({
 })
 require("symbols-outline").setup()
 require("tabline").setup()
--- vim.cmd('source ~/Documents/PersonalProjects/vim-ckb-next/plugin/vim-ckb-next.vim');
+require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')

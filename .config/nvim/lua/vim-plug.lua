@@ -90,9 +90,8 @@ Plug 'tpope/vim-fugitive'
 -- Start screen
 Plug 'mhinz/vim-startify'
 
--- This plugin is causing bad performance on NERDTree
 -- Context 
--- Plug 'wellle/context.vim'
+ Plug 'wellle/context.vim'
 
 -- Productivity
 Plug 'tweekmonster/startuptime.vim'
@@ -111,10 +110,13 @@ Plug 'norcalli/nvim-colorizer.lua'
 -- Tmux 
 Plug 'christoomey/vim-tmux-navigator'
 
+-- Debug
+Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python'
+
 -- New
 Plug 'stevearc/overseer.nvim'
 Plug 'simrat39/symbols-outline.nvim'
 Plug 'folke/trouble.nvim'
-Plug ('ms-jpq/chadtree', {['branch'] = 'chad', ['do'] = 'python3 -m chadtree deps'})
 Plug 'tpope/vim-repeat'
 vim.call('plug#end')
