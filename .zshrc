@@ -74,7 +74,7 @@ plugins=(
   git
   colorize
   zsh-autosuggestions 
-  colors
+  #colors
   zsh-syntax-highlighting
 )
 
@@ -108,7 +108,7 @@ export NODE_OPTIONS=--openssl-legacy-provider
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/cristian/google-cloud-sdk/path.zsh.inc' ]; then . '/home/cristian/google-cloud-sdk/path.zsh.inc'; fi
