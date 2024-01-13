@@ -97,6 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 export NODE_OPTIONS=--openssl-legacy-provider
  
 # Set personal aliases, overriding those provided by oh-my-zsh libs,

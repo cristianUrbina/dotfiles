@@ -1,3 +1,4 @@
-undodir/
-plugged/
-
+tags
+test.sh
+.luarc.json
+nvim
