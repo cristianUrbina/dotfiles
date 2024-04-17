@@ -190,8 +190,8 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3status
     position top
-    tray_output HDMI-1-0 
-    font pango: Hack Nerd Font 10 
+    tray_output HDMI-1-0
+    font pango: Hack Nerd Font 8
     separator_symbol "  "
 
     colors {
@@ -216,8 +216,11 @@ default_border pixel 2
 default_floating_border pixel 2
 
 exec --no-startup-id xrandr --output HDMI-1-0 --mode 1920x1080 --primary --auto --output eDP-1 --mode 1920x1080 --right-of HDMI-1-0 --auto --output DVI-I-2-1 --mode 1680x1050 --left-of HDMI-1-0 --auto
+exec --no-startup-id xrandr --dpi 144
 exec --no-startup-id xset r rate 200 25
 exec --no-startup-id ckb-next
+exec --no-startup-id nitrogen --restore & 
+exec --no-startup-id picom & 
 exec_always --no-startup-id "~/.config/i3/tray.sh"
 
 workspace 1 output DVI-I-2-1
