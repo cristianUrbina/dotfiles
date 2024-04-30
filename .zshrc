@@ -74,7 +74,6 @@ plugins=(
   git
   colorize
   zsh-autosuggestions
-  colors
   zsh-syntax-highlighting
 )
 
