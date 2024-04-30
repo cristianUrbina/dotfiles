@@ -73,8 +73,8 @@ ZSH_THEME="cloud"
 plugins=(
   git
   colorize
-  zsh-autosuggestions 
-  #colors
+  zsh-autosuggestions
+  colors
   zsh-syntax-highlighting
 )
 
@@ -99,7 +99,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 export NODE_OPTIONS=--openssl-legacy-provider
- 
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -116,3 +116,4 @@ if [ -f '/home/cristian/google-cloud-sdk/path.zsh.inc' ]; then . '/home/cristian
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/cristian/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/cristian/google-cloud-sdk/completion.zsh.inc'; fi
+eval "$(gh copilot alias -- zsh)"
