@@ -1,5 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="gallois"
+ZSH_THEME="gallois" # set by `omz`
 
 plugins=(
   git
@@ -10,14 +10,16 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
-export NODE_OPTIONS=--openssl-legacy-provider
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/cristian/google-cloud-sdk/path.zsh.inc' ]; then . '/home/cristian/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/cristian/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/cristian/google-cloud-sdk/completion.zsh.inc'; fi
+# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+#
