@@ -180,12 +180,14 @@ default_border pixel 2
 default_floating_border pixel 2
 
 assign [class="firefox"] "2: Web"
+assign [class="workbench"] "3: DB"
 assign [class="ckb-next"] 9
 
 exec --no-startup-id xset r rate 200 25
 exec --no-startup-id ckb-next
 exec --no-startup-id firefox
 exec --no-startup-id alacritty
+exec --no-startup-id mysql-workbench
 exec --no-startup-id nitrogen --restore &
 exec --no-startup-id picom &
 exec_always --no-startup-id "~/.config/i3/tray.sh"
