@@ -11,15 +11,19 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
+export PATH="$PATH:$(go env GOPATH)/bin"
+
+export HOME_SERVER_IP="192.168.0.134"
+export FZF_DEFAULT_OPTS='--height 40% --tmux bottom,40% --layout reverse --border top'
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
-# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-#
+rtmux() {
+    cd ~/.local/share/tmux/resurrect/ || exit # Your save path
+    find . | sort | tail -n 1 | xargs rm
+    find . -printf "%f\n" | sort | tail -n 1 | xargs -I {} ln -sf {} last
+    cd - || exit
+}

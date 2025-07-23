@@ -1,4 +1,4 @@
-general.import = ["/home/cristian/.config/alacritty/themes/themes/nord.toml"]
+general.import = ["/home/cristian/.config/alacritty/themes/themes/everforest_dark.toml"]
 
 [env]
 TERM = "xterm-256color"
@@ -22,10 +22,19 @@ family = "Hack Nerd Font Mono"
 program = "/usr/bin/zsh"
 
 [window]
-decorations = "None"
+decorations = "Full"
 
-[colors]
-# primary = { background = "0x000000", foreground = "0xd0d0d0" }
-# transparent_background_colors = true
+# [[keyboard.bindings]]
+# key = "H"
+# mods = "Control|Shift"
+# chars = "htop\x0D"
 
-[terminal]
+# [keyboard]
+# bindings = [
+#   { key = "T", mods = "Control|Shift", command = "/home/cristian/.local/bin/start-cei-tmux-session" }
+# ]
+[keyboard]
+bindings = [
+  { key = "T", mods = "Control|Shift", command = { program = "sh", args = ["-c", "/home/cristian/.local/bin/start-cei-tmux-session"] } }
+]
+
